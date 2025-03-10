@@ -45,7 +45,12 @@ router.post('/upload', auth, sellerAuth, upload.single('image'), async (req, res
 router.get('/', async (req, res) => {
     try {
         const tires = await Tire.find().populate('seller', 'name email');
-        res.json(tires);
+
+         // Filter out tires with missing sellers
+         const validTires = tires.filter(tire => tire.seller !== null);
+
+         res.json(validTires);
+        // res.json(tires);
     } catch (err) {
         res.status(500).send('Server Error');
     }

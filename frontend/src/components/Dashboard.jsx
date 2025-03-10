@@ -18,14 +18,16 @@ const Dashboard = () => {
             <h1>Dashboard</h1>
             <h3>Welcome, {role}!</h3>
 
-            {/* Render buttons based on role */}
+            {/* Admin Options */}
             {role === 'admin' && <button onClick={() => alert('Manage Users')}>Manage Users</button>}
-            {role === 'seller' && (
-                <>
-                    <UploadTire /> {/* Render the UploadTire component for sellers */}
-                    <TireList /> {/* Render the TireList component for sellers */}
-                </>
-            )}
+
+            {/* Seller Options */}
+            {role === 'seller' && <UploadTire />} {/* Only sellers can upload tires */}
+
+            {/* Display Tires for Both Sellers and Buyers */}
+            <TireList /> 
+
+            {/* Buyer Options */}
             {role === 'buyer' && <button onClick={() => alert('View Products')}>View Products</button>}
 
             <button onClick={handleLogout}>Logout</button>
