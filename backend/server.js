@@ -18,6 +18,7 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/tires', require('./routes/tire'));
 app.use('/api/orders', require('./routes/order'));
 app.use('/api/mpesa', require('./routes/mpesa'));
+app.use('/api/admin', require('./routes/admin'));
 
 
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import UploadTire from '../pages/UploadTire'; // Import the UploadTire component
 import TireList from '../pages/TireList'; // Import the TireList component
+import AdminDashboard from '../pages/AdminDashboard'
 
 const Dashboard = () => {
     const role = localStorage.getItem('role');
@@ -19,7 +20,7 @@ const Dashboard = () => {
             <h3>Welcome, {role}!</h3>
 
             {/* Admin Options */}
-            {role === 'admin' && <button onClick={() => alert('Manage Users')}>Manage Users</button>}
+            {role === 'admin' && <AdminDashboard/>}
 
             {/* Seller Options */}
             {role === 'seller' && <UploadTire />} {/* Only sellers can upload tires */}

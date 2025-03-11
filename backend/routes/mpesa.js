@@ -1,12 +1,12 @@
 const express = require('express');
 const { stkPush } = require('../config/mpesa');
-const authMiddleware = require('../middleware/authMiddleware');
+const {auth} = require('../middleware/auth');
 const Order = require('../models/Order');
 
 const router = express.Router();
 
 // Initiate Mpesa Payment
-router.post('/pay', authMiddleware, async (req, res) => {
+router.post('/pay', auth, async (req, res) => {
     const { phone, amount, orderId } = req.body;
 
     try {
