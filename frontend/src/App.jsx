@@ -3,11 +3,13 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import Register from './pages/Register'
 import Dashboard from './components/Dashboard'
+import LandingPage from './pages/LandingPage'
 
 const App = () => {
     return (
         <Router>
             <Routes>
+                <Route path="/" element={<LandingPage />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/admin-dashboard" element={<Dashboard />} />

@@ -52,4 +52,21 @@ router.post('/login', async (req, res) => {
     }
 });
 
+// Fetch User Details by ID
+router.get('/user/:userId', async (req, res) => {
+    try {
+        const userId = req.params.userId;
+        const user = await User.findById(userId).select('-password'); // Exclude password from the response
+
+        if (!user) {
+            return res.status(404).json({ msg: 'User not found' });
+        }
+
+        res.json(user); // Return the user's details (including name)
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error');
+    }
+});
+
 module.exports = router;
